@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import com.example.demo.SareetaApplication;
 import com.example.demo.TestUtils;
 import com.example.demo.model.persistence.Cart;
 import com.example.demo.model.persistence.Item;
@@ -10,7 +11,12 @@ import com.example.demo.model.persistence.repositories.UserRepository;
 import com.example.demo.model.requests.ModifyCartRequest;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -22,6 +28,7 @@ import static org.mockito.Mockito.when;
 
 public class CartControllerTest {
     private CartController cartController;
+
     private UserRepository userRepository = mock(UserRepository.class);
     private CartRepository cartRepository = mock(CartRepository.class);
     private ItemRepository itemRepository = mock(ItemRepository.class);

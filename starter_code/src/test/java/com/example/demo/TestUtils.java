@@ -10,10 +10,10 @@ public class TestUtils {
 
         try {
             Field f = target.getClass().getDeclaredField(fieldName);
-            if (!f.canAccess(target)){
+            //if (!f.canAccess(target)){
                 f.setAccessible(true);
                 wasPrivate = true;
-            }
+            //}
             f.set(target, toInject);
             if (wasPrivate){
                 f.setAccessible(false);

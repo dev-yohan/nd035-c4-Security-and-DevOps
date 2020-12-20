@@ -1,4 +1,8 @@
 pipeline {
+  tools {
+      jdk 'jdk_1.8.0_151'
+    }
+
   agent {
     docker {
       image 'maven:3-alpine'

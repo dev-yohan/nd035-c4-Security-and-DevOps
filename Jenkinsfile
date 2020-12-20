@@ -12,13 +12,6 @@ pipeline {
         sh 'mvn --version'
       }
     }
-    stage('Clean') {
-                steps {
-                    dir('starter_code'){
-                        sh 'mvn -B -DskipTests clean package'
-                    }
-                }
-            }
     stage('Test') {
                 steps {
                     dir('starter_code'){

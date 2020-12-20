@@ -12,6 +12,13 @@ pipeline {
         sh 'mvn --version'
       }
     }
+    stage('Clean') {
+                steps {
+                    dir('starter_code'){
+                        sh 'mvn clean compile'
+                    }
+                }
+            }
     stage('Test') {
                 steps {
                     dir('starter_code'){

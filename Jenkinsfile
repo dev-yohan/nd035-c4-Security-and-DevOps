@@ -11,6 +11,9 @@ pipeline {
       steps {
         sh 'mvn --version'
       }
+      steps {
+        sh 'javac -version'
+      }
     }
     stage('Clean') {
                 steps {

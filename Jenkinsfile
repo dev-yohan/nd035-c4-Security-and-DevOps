@@ -13,14 +13,16 @@ pipeline {
     }
     stage('Clean') {
                 steps {
-                    sh 'cd starter_code'
-                    sh 'mvn -B -DskipTests clean package'
+                    dir('starter_code'){
+                        sh 'mvn -B -DskipTests clean package'
+                    }
                 }
             }
     stage('Test') {
                 steps {
-                    sh 'cd starter_code'
-                    sh 'mvn test'
+                    dir('starter_code'){
+                        sh 'mvn test'
+                    }
                 }
                 post {
                     always {

@@ -32,13 +32,25 @@ pipeline {
                 }
             }
     stage ("Package"){
-                 steps { sh 'mvn package -DskipTests'}
+                 steps {
+                    dir('starter_code'){
+                        sh 'mvn package -DskipTests'
+                     }
+              }
             }
     stage ("copy artifact"){
-         steps { sh 'cp target/auth-course-0.0.1-SNAPSHOT.jar /tmp/ecom_app.jar && chmod 755 /tmp/ecom_app.jar'}
+         steps {
+            dir('starter_code'){
+                sh 'cp target/auth-course-0.0.1-SNAPSHOT.jar /tmp/ecom_app.jar && chmod 755 /tmp/ecom_app.jar'
+            }
+         }
     }
     stage ("Deploy"){
-         steps { sh 'cd /tmp  && java -jar ecom_app.jar &'}
+         steps {
+            dir('starter_code') {
+                sh 'cd /tmp  && java -jar ecom_app.jar &'
+            }
+         }
     }
   }
 }
